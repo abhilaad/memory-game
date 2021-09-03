@@ -1,0 +1,117 @@
+.App {
+  width: 100%;
+  height: 100%;
+}
+.App header {
+  position: relative;
+  width: 100%;
+  text-align: center;
+  margin-bottom: 8px;
+}
+.App header > div {
+  font-size: 15px;
+  width: 324px;
+  text-align: center;
+  margin: 0 auto;
+}
+
+.App .container {
+  border: 1px solid #dedede;
+  padding: 12px;
+  box-shadow: 0 0 4px 4px #dedede;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  justify-items: center;
+  align-items: stretch;
+  gap: 1rem;
+  margin: 0 auto;
+  width: 35rem;
+  height: 35rem;
+  max-width: 920px;
+}
+
+p {
+  font-family: "VT323";
+  font-size: 8em;
+  text-align: center;
+  animation-name: example;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+}
+@keyframes example {
+  0% {
+    color: white;
+    text-shadow: 0 0 20px rgb(98, 0, 128);
+  }
+  25% {
+    color: grey;
+    text-shadow: 2px 2px 2px rgb(203, 25, 226);
+    transform: translate(-2px, 1px);
+  }
+
+  50% {
+    color: grey;
+    text-shadow: 5px 5px 2px blue, -5px -5px 2px rgb(0, 102, 255);
+    transform: translate(0px, 5px);
+  }
+  75% {
+    color: white;
+    text-shadow: none;
+    transform: translate(0, 0);
+  }
+
+  100% {
+    color: white;
+    text-shadow: none;
+  }
+}
+
+.matches-button {
+  background-color: blue;
+  color: white;
+  position: fixed;
+  top: 0.5%;
+  left: 0.5%;
+  text-align: center;
+  letter-spacing: 0.2rem;
+  font-size: 2rem;
+
+  width: 12rem;
+}
+.turns {
+  color: white;
+  position: fixed;
+  letter-spacing: 0.7rem;
+  top: 0.5%;
+  right: 1.5%;
+  text-align: center;
+  font-size: 150%;
+  max-width: 10rem;
+}
+.restart-button {
+  background-color: blue;
+  cursor: pointer;
+  color: white;
+  position: fixed;
+  bottom: 0.5%;
+  right: 0.5%;
+  text-align: center;
+  letter-spacing: 0.2rem;
+  font-size: 2rem;
+
+  max-width: 11.5rem;
+}
+.menu-button {
+  background-color: blue;
+  cursor: pointer;
+  color: white;
+  position: fixed;
+  bottom: 0.5%;
+  left: 0.5%;
+  text-align: center;
+  letter-spacing: 0.2rem;
+  font-size: 2rem;
+
+  max-width: 10rem;
+}
