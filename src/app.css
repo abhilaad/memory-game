@@ -132,7 +132,7 @@ p {
 }
 
 
-@media only screen and (max-width: 850px) {
+@media only screen and (max-width: 950px) {
   .App{
     margin-top: 5rem;
   }
@@ -172,15 +172,15 @@ p {
 
 @media only screen and (max-width: 650px){
   .App{
-    margin-top: 3.5rem;
+    margin-top: 5rem;
   }
   .App .container {
     border: 2.5px solid red;      
     padding: 6px;     
     gap: 0.5rem;
     margin: 0 auto;
-    width: 20rem;
-    height: 20rem;
+    width: 22rem;
+    height: 22rem;
     max-width: 380px;
   }
 
