@@ -10,13 +10,15 @@ import F from "./images/F.jpg";
 import G from "./images/G.jpg";
 import H from "./images/H.jpg";
 
-window.addEventListener('beforeunload', function (e) {
+
+window.addEventListener("beforeunload", function (e) {
   // Cancel the event
   e.preventDefault(); // If you prevent default behavior in Mozilla Firefox prompt will always be shown
   // Chrome requires returnValue to be set
   e.returnValue = '';
   
 });
+
 
 const alphaArray = [
   {
@@ -68,6 +70,8 @@ function shuffle(array) {
 }
 
 export default function App() {
+  const [homepage,setHomePage] = useState(true);
+  
   
   const [cards, setCards] = useState(
     shuffle.bind(null, alphaArray.concat(alphaArray))
@@ -85,6 +89,7 @@ export default function App() {
     const onComplete = () => {
       if (Object.keys(matchedCards).length === alphaArray.length) {
         setShow(true);
+        
         flushSetTimeout = setTimeout(() => {
           window.location.reload();
         }, 5000);
@@ -143,11 +148,7 @@ export default function App() {
       setOpenCards([index]);
     }
     
-  };
-
-  
-
- 
+  }; 
 
   const checkIsInactive = (card) => {
     return Boolean(matchedCards[card.type]);
@@ -163,43 +164,63 @@ export default function App() {
     // set a shuffled deck of cards
     setCards(shuffle(alphaArray.concat(alphaArray)));
   };
+  const onExit = ()=>{ 
+    window.close();
+}
+const onPlay =()=>{
+    setHomePage(!homepage);
+}
+const onMenuClick = ()=>{
+  setHomePage(!homepage)
+}
+
 
   return (
-    <div className="App">
-      <button className="matches-button">Matches {matches}</button>
-      <div className="turns">TURNS {moves}</div>
-      {
-        console.log(matchedCards)
-      }
-
-      <button onClick={handleRestart} className="menu-button">
-        MENU
-      </button>
-      <button onClick={handleRestart} className="restart-button">
-        RESTART
-      </button>
-
-      {show ? (
-        <p className="game-over">You did it in {moves} turns</p>
-      ) : (
-        <div className="container">
-          {cards.map((card, index) => {
-            return (
-              <Card
-                key={index}
-                card={card}
-                index={index}
-                isDisabled={disableCards}
-                isInactive={checkIsInactive(card)}
-                isFlipped={checkIsFlipped(index)}
-                onClick={handleCardClick}                
-              />
-            );
-          })}
+  <>
+  {homepage? <div className="homepage">
+            <button onClick={onPlay} className="play">Play</button>
+            <button className="sound">Sound</button>
+            <button onClick={onExit} className="exit">Exit</button>            
         </div>
-      )}
+  : <div className="App">
+  <button className="matches-button">Matches {matches}</button>
+  <div className="turns">TURNS {moves}</div>
+  {
+    console.log(matchedCards)
+  }
+  
 
-     
+  <button onClick={onMenuClick} className="menu-button">
+    MENU
+  </button>
+  <button onClick={handleRestart} className="restart-button">
+    RESTART
+  </button>
+
+  {show ? (
+    <p className="game-over">You did it in {moves} turns</p>
+  ) : (
+    <div className="container">
+      {cards.map((card, index) => {
+        return (
+          <Card
+            key={index}
+            card={card}
+            index={index}
+            isDisabled={disableCards}
+            isInactive={checkIsInactive(card)}
+            isFlipped={checkIsFlipped(index)}
+            onClick={handleCardClick}                
+          />
+        );
+      })}
     </div>
+  )}
+
+ 
+</div>
+  }
+  </>
+   
   );
 }
