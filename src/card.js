@@ -3,7 +3,7 @@ import classnames from "classnames";
 import defaultpic from "./images/defaultpic.jpg";
 import "./card.css";
 
-const Card = ({ onClick, card, index, isInactive, isFlipped, isDisabled }) => {
+const Card = ({ onClick, card, index, isInactive, isFlipped, isDisabled}) => {
   const handleClick = () => {
     !isFlipped && !isDisabled && onClick(index);
   };
@@ -12,9 +12,10 @@ const Card = ({ onClick, card, index, isInactive, isFlipped, isDisabled }) => {
     <div
       className={classnames("card", {
         "is-flipped": isFlipped,
-        "is-inactive": isInactive
+        "is-inactive": isInactive,        
       })}
-      onClick={handleClick}
+      onClick={isInactive? null :handleClick}
+      
     >
       <div className="card-face card-font-face">
         <img src={defaultpic} alt="defaultpic" />

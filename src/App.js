@@ -10,6 +10,14 @@ import F from "./images/F.jpg";
 import G from "./images/G.jpg";
 import H from "./images/H.jpg";
 
+window.addEventListener('beforeunload', function (e) {
+  // Cancel the event
+  e.preventDefault(); // If you prevent default behavior in Mozilla Firefox prompt will always be shown
+  // Chrome requires returnValue to be set
+  e.returnValue = '';
+  
+});
+
 const alphaArray = [
   {
     type: "A",
@@ -60,6 +68,7 @@ function shuffle(array) {
 }
 
 export default function App() {
+  
   const [cards, setCards] = useState(
     shuffle.bind(null, alphaArray.concat(alphaArray))
   );
@@ -73,7 +82,7 @@ export default function App() {
   
 
   useEffect(() => {
-    const checkCompletion = () => {
+    const onComplete = () => {
       if (Object.keys(matchedCards).length === alphaArray.length) {
         setShow(true);
         flushSetTimeout = setTimeout(() => {
@@ -81,7 +90,7 @@ export default function App() {
         }, 5000);
       }
     };
-    checkCompletion();
+    onComplete();
     setMatches(Object.keys(matchedCards).length);
   }, [matchedCards]);
 
@@ -126,13 +135,14 @@ export default function App() {
   };
   const handleCardClick = (index) => {
     if (openCards.length === 1) {
-      setOpenCards((prev) => [...prev, index]);
+      setOpenCards((prev) => [...prev, index]);      
       setMoves((moves) => moves + 1);
       disable();
     } else {
       clearTimeout(timeout.current);
       setOpenCards([index]);
     }
+    
   };
 
   
@@ -158,6 +168,9 @@ export default function App() {
     <div className="App">
       <button className="matches-button">Matches {matches}</button>
       <div className="turns">TURNS {moves}</div>
+      {
+        console.log(matchedCards)
+      }
 
       <button onClick={handleRestart} className="menu-button">
         MENU
@@ -179,7 +192,7 @@ export default function App() {
                 isDisabled={disableCards}
                 isInactive={checkIsInactive(card)}
                 isFlipped={checkIsFlipped(index)}
-                onClick={handleCardClick}
+                onClick={handleCardClick}                
               />
             );
           })}

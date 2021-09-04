@@ -1,4 +1,10 @@
+
+body{
+  background: url("./back.gif") no-repeat center center fixed; 
+background-size: cover;
+}
 .App {
+  margin-top: 2.5rem;
   width: 100%;
   height: 100%;
 }
@@ -6,9 +12,8 @@
 
 
 .App .container {
-  border: 1px solid #dedede;
-  padding: 12px;
-  box-shadow: 0 0 4px 4px #dedede;
+  border: 5px solid red;
+  padding: 12px; 
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(4, 1fr);
@@ -67,7 +72,7 @@ p {
   letter-spacing: 0.2rem;
   font-size: 2rem;
 
-  width: 12rem;
+  width: 10rem;
 }
 .turns {
   color: white;
@@ -104,4 +109,48 @@ p {
   font-size: 2rem;
 
   max-width: 10rem;
+}
+.is-inactive {
+  cursor:unset;
+  
+}
+@media only screen and (max-width: 850px) {
+  .App{
+    margin-top: 5rem;
+  }
+  .App .container {
+    border: 2.5px solid red;      
+    padding: 6px;     
+    gap: 0.6rem;
+    margin: 0 auto;
+    width: 28rem;
+    height: 28rem;
+    max-width: 480px;
+  }
+  .matches-button {    
+    top: 0.5%;
+    left: 0.5%;
+    text-align: center;
+    letter-spacing: 0.2rem;
+    font-size: 1.5rem;  
+    width: 7.5rem;
+  }
+  .turns {    
+    letter-spacing: 0.4rem;   
+    font-size: 110%;
+    max-width: 7rem;
+  }
+  .menu-button { 
+    letter-spacing: 0.15rem;
+    font-size: 1.5rem;  
+    max-width: 6rem;
+  }
+  .restart-button {   
+    letter-spacing: 0.15rem;
+    font-size: 1.25rem;  
+    max-width: 7.5rem;
+  }
+
+
+  
 }
