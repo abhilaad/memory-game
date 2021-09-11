@@ -178,7 +178,7 @@ const onMenuClick = ()=>{
   return (
   <>
   {homepage? <div className="homepage">
-            <button onClick={onPlay} className="play">Play</button>
+            <button onClick={onPlay} className="play">Playy</button>
             <button className="sound">Sound</button>
             <button onClick={onExit} className="exit">Exit</button>            
         </div>
